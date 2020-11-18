@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gdu.cash.restmapper.RestCashbookMapper">
+	<select id="selectInAndOutByMonth" parameterType="int" resultType="java.util.Map"> <!-- 총 년도의  월별 수입/지출 -->
+		SELECT
+			sum(case when day(cashbook_date)=1 and cashbook_kind='수입' then cashbook_price END) 'a1',
+			sum(case when day(cashbook_date)=2 and cashbook_kind='수입' then cashbook_price END) 'a2',
+			sum(case when day(cashbook_date)=3 and cashbook_kind='수입' then cashbook_price END) 'a3',
+			sum(case when day(cashbook_date)=4 and cashbook_kind='수입' then cashbook_price END) 'a4',
+			sum(case when day(cashbook_date)=5 and cashbook_kind='수입' then cashbook_price END) 'a5',
+			sum(case when day(cashbook_date)=6 and cashbook_kind='수입' then cashbook_price END) 'a6',
+			sum(case when day(cashbook_date)=7 and cashbook_kind='수입' then cashbook_price END) 'a7',
+			sum(case when day(cashbook_date)=8 and cashbook_kind='수입' then cashbook_price END) 'a8',
+			sum(case when day(cashbook_date)=9 and cashbook_kind='수입' then cashbook_price END) 'a9',
+			sum(case when day(cashbook_date)=10 and cashbook_kind='수입' then cashbook_price END) 'a10',
+			sum(case when day(cashbook_date)=11 and cashbook_kind='수입' then cashbook_price END) 'a11',
+			sum(case when day(cashbook_date)=12 and cashbook_kind='수입' then cashbook_price END) 'a12',
+			sum(case when day(cashbook_date)=13 and cashbook_kind='수입' then cashbook_price END) 'a13',
+			sum(case when day(cashbook_date)=14 and cashbook_kind='수입' then cashbook_price END) 'a14',
+			sum(case when day(cashbook_date)=15 and cashbook_kind='수입' then cashbook_price END) 'a15',
+			sum(case when day(cashbook_date)=16 and cashbook_kind='수입' then cashbook_price END) 'a16',
+			sum(case when day(cashbook_date)=17 and cashbook_kind='수입' then cashbook_price END) 'a17',
+			sum(case when day(cashbook_date)=18 and cashbook_kind='수입' then cashbook_price END) 'a18',
+			sum(case when day(cashbook_date)=19 and cashbook_kind='수입' then cashbook_price END) 'a19',
+			sum(case when day(cashbook_date)=20 and cashbook_kind='수입' then cashbook_price END) 'a20',
+			sum(case when day(cashbook_date)=21 and cashbook_kind='수입' then cashbook_price END) 'a21',
+			sum(case when day(cashbook_date)=22 and cashbook_kind='수입' then cashbook_price END) 'a22',
+			sum(case when day(cashbook_date)=23 and cashbook_kind='수입' then cashbook_price END) 'a23',
+			sum(case when day(cashbook_date)=24 and cashbook_kind='수입' then cashbook_price END) 'a24',
+			sum(case when day(cashbook_date)=25 and cashbook_kind='수입' then cashbook_price END) 'a25',
+			sum(case when day(cashbook_date)=26 and cashbook_kind='수입' then cashbook_price END) 'a26',
+			sum(case when day(cashbook_date)=27 and cashbook_kind='수입' then cashbook_price END) 'a27',
+			sum(case when day(cashbook_date)=28 and cashbook_kind='수입' then cashbook_price END) 'a28',
+			sum(case when day(cashbook_date)=29 and cashbook_kind='수입' then cashbook_price END) 'a29',
+			sum(case when day(cashbook_date)=30 and cashbook_kind='수입' then cashbook_price END) 'a30',
+			sum(case when day(cashbook_date)=31 and cashbook_kind='수입' then cashbook_price END) 'a31',
+			sum(case when day(cashbook_date)=1 and cashbook_kind='지출' then cashbook_price END) 'b1',
+			sum(case when day(cashbook_date)=2 and cashbook_kind='지출' then cashbook_price END) 'b2',
+			sum(case when day(cashbook_date)=3 and cashbook_kind='지출' then cashbook_price END) 'b3',
+			sum(case when day(cashbook_date)=4 and cashbook_kind='지출' then cashbook_price END) 'b4',
+			sum(case when day(cashbook_date)=5 and cashbook_kind='지출' then cashbook_price END) 'b5',
+			sum(case when day(cashbook_date)=6 and cashbook_kind='지출' then cashbook_price END) 'b6',
+			sum(case when day(cashbook_date)=7 and cashbook_kind='지출' then cashbook_price END) 'b7',
+			sum(case when day(cashbook_date)=8 and cashbook_kind='지출' then cashbook_price END) 'b8',
+			sum(case when day(cashbook_date)=9 and cashbook_kind='지출' then cashbook_price END) 'b9',
+			sum(case when day(cashbook_date)=10 and cashbook_kind='지출' then cashbook_price END) 'b10',
+			sum(case when day(cashbook_date)=11 and cashbook_kind='지출' then cashbook_price END) 'b11',
+			sum(case when day(cashbook_date)=12 and cashbook_kind='지출' then cashbook_price END) 'b12',
+			sum(case when day(cashbook_date)=13 and cashbook_kind='지출' then cashbook_price END) 'b13',
+			sum(case when day(cashbook_date)=14 and cashbook_kind='지출' then cashbook_price END) 'b14',
+			sum(case when day(cashbook_date)=15 and cashbook_kind='지출' then cashbook_price END) 'b15',
+			sum(case when day(cashbook_date)=16 and cashbook_kind='지출' then cashbook_price END) 'b16',
+			sum(case when day(cashbook_date)=17 and cashbook_kind='지출' then cashbook_price END) 'b17',
+			sum(case when day(cashbook_date)=18 and cashbook_kind='지출' then cashbook_price END) 'b18',
+			sum(case when day(cashbook_date)=19 and cashbook_kind='지출' then cashbook_price END) 'b19',
+			sum(case when day(cashbook_date)=20 and cashbook_kind='지출' then cashbook_price END) 'b20',
+			sum(case when day(cashbook_date)=21 and cashbook_kind='지출' then cashbook_price END) 'b21',
+			sum(case when day(cashbook_date)=22 and cashbook_kind='지출' then cashbook_price END) 'b22',
+			sum(case when day(cashbook_date)=23 and cashbook_kind='지출' then cashbook_price END) 'b23',
+			sum(case when day(cashbook_date)=24 and cashbook_kind='지출' then cashbook_price END) 'b24',
+			sum(case when day(cashbook_date)=25 and cashbook_kind='지출' then cashbook_price END) 'b25',
+			sum(case when day(cashbook_date)=26 and cashbook_kind='지출' then cashbook_price END) 'b26',
+			sum(case when day(cashbook_date)=27 and cashbook_kind='지출' then cashbook_price END) 'b27',
+			sum(case when day(cashbook_date)=28 and cashbook_kind='지출' then cashbook_price END) 'b28',
+			sum(case when day(cashbook_date)=29 and cashbook_kind='지출' then cashbook_price END) 'b29',
+			sum(case when day(cashbook_date)=30 and cashbook_kind='지출' then cashbook_price END) 'b30',
+			sum(case when day(cashbook_date)=31 and cashbook_kind='지출' then cashbook_price END) 'b31'
+		FROM cashbook
+		WHERE YEAR(cashbook_date) AND MONTH(cashbook_date) = #{month}
+		GROUP BY MONTH(cashbook_date)
+	</select>
+	
+
+	<select id="selectCategoryOutByYear" parameterType="int" resultType="java.util.Map"> <!-- 년도의 카테고리별 지출 -->
+		SELECT YEAR(cashbook_date) '년',
+			sum(case when category_name='용돈' then cashbook_price END) '용돈지출',
+			sum(case when category_name='급여' then cashbook_price END) '급여지출',
+			sum(case when category_name='생활' then cashbook_price END) '생활지출',
+			sum(case when category_name='식비' then cashbook_price END) '식비지출'
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year} AND cashbook_kind='지출'
+		GROUP BY Year(cashbook_date)
+	</select>
+
+	<select id="selectCategoryInByYear" resultType="java.util.Map"> <!-- 18, 19, 20년도 카테고리 수입 -->
+		SELECT 
+			sum(case when year(cashbook_date)=2018 AND category_name='용돈' then cashbook_price END) a1,
+			sum(case when year(cashbook_date)=2018 AND category_name='급여' then cashbook_price END) a2,
+			sum(case when year(cashbook_date)=2019 AND category_name='용돈' then cashbook_price END) b1,
+			sum(case when year(cashbook_date)=2019 AND category_name='급여' then cashbook_price END) b2,
+			sum(case when year(cashbook_date)=2020 AND category_name='용돈' then cashbook_price END) c1,
+			sum(case when year(cashbook_date)=2020 AND category_name='급여' then cashbook_price END) c2
+		FROM cashbook
+		WHERE cashbook_kind='수입'
+	</select>
+
+
+	<select id="selectMonthInMoneyByYear" parameterType="int" resultType="java.util.Map"> <!-- 년도별 용돈수입 확인 -->
+		SELECT
+			sum(case when month(cashbook_date)=1 AND category_name='용돈' then cashbook_price END) '1월',
+			sum(case when month(cashbook_date)=2 AND category_name='용돈' then cashbook_price END) '2월',
+			sum(case when month(cashbook_date)=3 AND category_name='용돈' then cashbook_price END) '3월',
+			sum(case when month(cashbook_date)=4 AND category_name='용돈' then cashbook_price END) '4월',
+			sum(case when month(cashbook_date)=5 AND category_name='용돈' then cashbook_price END) '5월',
+			sum(case when month(cashbook_date)=6 AND category_name='용돈' then cashbook_price END) '6월',
+			sum(case when month(cashbook_date)=7 AND category_name='용돈' then cashbook_price END) '7월',
+			sum(case when month(cashbook_date)=8 AND category_name='용돈' then cashbook_price END) '8월',
+			sum(case when month(cashbook_date)=9 AND category_name='용돈' then cashbook_price END) '9월',
+			sum(case when month(cashbook_date)=10 AND category_name='용돈' then cashbook_price END) '10월',
+			sum(case when month(cashbook_date)=11 AND category_name='용돈' then cashbook_price END) '11월',
+			sum(case when month(cashbook_date)=12 AND category_name='용돈' then cashbook_price END) '12월'
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year} AND cashbook_kind='수입'
+		GROUP BY YEAR(cashbook_date)
+	</select>
+
+
+	<select id="selectTotalCategoryByYear" parameterType="int" resultType="java.util.Map"> <!-- 년도의 카테고리별 수입 지출 -->
+		SELECT YEAR(cashbook_date) '년',
+			sum(case when cashbook_kind='수입' AND category_name='용돈' then cashbook_price END) '용돈수입',
+			sum(case when cashbook_kind='수입' AND category_name='급여' then cashbook_price END) '급여수입',
+			sum(case when cashbook_kind='수입' AND category_name='생활' then cashbook_price END) '생활수입',
+			sum(case when cashbook_kind='수입' AND category_name='식비' then cashbook_price END) '식비수입',
+			sum(case when cashbook_kind='지출' AND category_name='용돈' then cashbook_price END) '용돈지출',
+			sum(case when cashbook_kind='지출' AND category_name='급여' then cashbook_price END) '급여지출',
+			sum(case when cashbook_kind='지출' AND category_name='생활' then cashbook_price END) '생활지출',
+			sum(case when cashbook_kind='지출' AND category_name='식비' then cashbook_price END) '식비지출'
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year}
+		GROUP BY Year(cashbook_date)
+	</select>
+	
+	<select id="selectTotalOfInMoneyByYear" resultType="java.util.Map"> <!-- 년도의 수입 -->
+		SELECT 
+			YEAR(cashbook_date) AS YEAR,
+			sum(case when month(cashbook_date)=1 then cashbook_price END) january,
+			sum(case when month(cashbook_date)=2 then cashbook_price END) february,
+			sum(case when month(cashbook_date)=3 then cashbook_price END) march,
+			sum(case when month(cashbook_date)=4 then cashbook_price END) april,
+			sum(case when month(cashbook_date)=5 then cashbook_price END) may,
+			sum(case when month(cashbook_date)=6 then cashbook_price END) june,
+			sum(case when month(cashbook_date)=7 then cashbook_price END) july,
+			sum(case when month(cashbook_date)=8 then cashbook_price END) august,
+			sum(case when month(cashbook_date)=9 then cashbook_price END) september,
+			sum(case when month(cashbook_date)=10 then cashbook_price END) october,
+			sum(case when month(cashbook_date)=11 then cashbook_price END) november,
+			sum(case when month(cashbook_date)=12 then cashbook_price END) december
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year} AND cashbook_kind='수입'
+		GROUP BY Year(cashbook_date)
+	</select>
+
+	<select id="selectTotalOutAndInByYear" parameterType="int" resultType="java.util.Map"> <!-- // 년도의 수입/지출 -->
+		SELECT YEAR(cashbook_date) '년',
+			sum(case when cashbook_kind='수입' then cashbook_price END) '수입',
+			sum(case when cashbook_kind='지출' then cashbook_price END) '지출'
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year}
+		GROUP BY Year(cashbook_date)
+	</select>
+	
+	<select id="selectTotalOfMonthByYear" resultType="java.util.Map">  <!-- 년도의 지출 -->
+		SELECT
+			YEAR(cashbook_date) AS year,
+			sum(case when month(cashbook_date)=1 then cashbook_price END) january,
+			sum(case when month(cashbook_date)=2 then cashbook_price END) february,
+			sum(case when month(cashbook_date)=3 then cashbook_price END) march,
+			sum(case when month(cashbook_date)=4 then cashbook_price END) april,
+			sum(case when month(cashbook_date)=5 then cashbook_price END) may,
+			sum(case when month(cashbook_date)=6 then cashbook_price END) june,
+			sum(case when month(cashbook_date)=7 then cashbook_price END) july,
+			sum(case when month(cashbook_date)=8 then cashbook_price END) august,
+			sum(case when month(cashbook_date)=9 then cashbook_price END) september,
+			sum(case when month(cashbook_date)=10 then cashbook_price END) october,
+			sum(case when month(cashbook_date)=11 then cashbook_price END) november,
+			sum(case when month(cashbook_date)=12 then cashbook_price END) december
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year} AND cashbook_kind = "지출"
+		GROUP BY Year(cashbook_date)
+	</select>
+</mapper>
