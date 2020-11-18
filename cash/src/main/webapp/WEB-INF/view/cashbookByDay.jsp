@@ -5,10 +5,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>cashbookByDay</title>
 </head>
-<body>
-	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+<body id="page-top" style="margin: 90px;">
+ <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/admin/index">Main</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+			<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+        </ul>
+      </div>
+    </div>
+  </nav>
 	<h1 class="text-center">cashbookListByDay</h1>
 	<div class="container">
 	<a href="/admin/addCategory">카테고리 추가</a>
@@ -54,5 +70,21 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<footer class="py-5 bg-dark" style="margin: 1px -90px;">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="js/scrolling-nav.js"></script>
 </body>
 </html>

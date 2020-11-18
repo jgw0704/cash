@@ -6,7 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface RestCashbookMapper {
-	// public Map<String, Object> select
+	public Map<String, Object> selectOutMoneyByMonth(int month); // 총 년도(18,19,20년도 합)의 월별 생활, 식비 카테고리 지출
+	
 	public Map<String, Object> selectInAndOutByMonth(int month); // 총 년도의 월별 수입/지출
 	
 	public Map<String, Object> selectCategoryOutByYear(int year); // 년도의 카테고리별 지츨

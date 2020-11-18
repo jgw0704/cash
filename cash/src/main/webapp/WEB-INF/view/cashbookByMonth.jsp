@@ -13,12 +13,18 @@
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="css/scrolling-nav.css" rel="stylesheet">
+<style type="text/css">
+	.sunday {color : #FF0000;}
+	.saturday {color: #0000FF;}
+	th {width:${100/7}%;}
+	td{height:80px; vertical-align:top;}
+</style>
 </head>
-<body id="page-top">
+<body id="page-top" style="margin: 90px;">
  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">CashbookByMonth</a>
+      <a class="navbar-brand js-scroll-trigger" href="/admin/index">Main</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,15 +35,7 @@
       </div>
     </div>
   </nav>
-<style type="text/css">
-	.sunday {color : #FF0000;}
-	.saturday {color: #0000FF;}
-	th {width:${100/7}%;}
-	td{height:80px; vertical-align:top;}
-</style>
-</head>
-<body style="margin: 90px;">
-	<h1 class="text-center">cashbookList</h1>
+	<h1 class="text-center">cashbook</h1>
 	<!-- 다이어리 -->
 	<div class="container">
 		이번달 수입 합계 : ${sumIn}
@@ -101,9 +99,6 @@
 			</tbody>
 		</table>
 	</div>
-	
-	
-	
 	<footer class="py-5 bg-dark" style="margin: 1px -90px;">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
@@ -120,7 +115,5 @@
 
   <!-- Custom JavaScript for this theme -->
   <script src="js/scrolling-nav.js"></script>
-	
-	
 </body>
 </html>

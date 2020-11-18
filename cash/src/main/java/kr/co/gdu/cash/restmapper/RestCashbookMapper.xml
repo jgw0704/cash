@@ -3,6 +3,25 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.gdu.cash.restmapper.RestCashbookMapper">
+	<select id="selectOutMoneyByMonth" parameterType="int" resultType="java.util.Map"> <!-- 총 년도(18,19,20년도 합)의 월별 생활, 식비 카테고리 지출 -->
+		SELECT
+			sum(case when day(cashbook_date)=1 and category_name="생활" then cashbook_price END) '1월생활지출',
+			sum(case when day(cashbook_date)=2 and category_name="생활" then cashbook_price END) '2월생활지출',
+			sum(case when day(cashbook_date)=3 and category_name="생활" then cashbook_price END) '3월생활지출',
+			sum(case when day(cashbook_date)=4 and category_name="생활" then cashbook_price END) '4월생활지출',
+			sum(case when day(cashbook_date)=5 and category_name="생활" then cashbook_price END) '5월생활지출',
+			sum(case when day(cashbook_date)=6 and category_name="생활" then cashbook_price END) '6월생활지출',
+			sum(case when day(cashbook_date)=7 and category_name="생활" then cashbook_price END) '7월생활지출',
+			sum(case when day(cashbook_date)=8 and category_name="생활" then cashbook_price END) '8월생활지출',
+			sum(case when day(cashbook_date)=9 and category_name="생활" then cashbook_price END) '9월생활지출',
+			sum(case when day(cashbook_date)=10 and category_name="생활" then cashbook_price END) '10월생활지출',
+			sum(case when day(cashbook_date)=11 and category_name="생활" then cashbook_price END) '11월생활지출',
+			sum(case when day(cashbook_date)=12 and category_name="생활" then cashbook_price END) '12월생활지출'
+			FROM cashbook
+		WHERE cashbook_kind='지출' AND MONTH(cashbook_date) = #{month} 
+		GROUP BY MONTH(cashbook_date)
+	</select>
+
 	<select id="selectInAndOutByMonth" parameterType="int" resultType="java.util.Map"> <!-- 총 년도의  월별 수입/지출 -->
 		SELECT
 			sum(case when day(cashbook_date)=1 and cashbook_kind='수입' then cashbook_price END) 'a1',
@@ -68,7 +87,7 @@
 			sum(case when day(cashbook_date)=30 and cashbook_kind='지출' then cashbook_price END) 'b30',
 			sum(case when day(cashbook_date)=31 and cashbook_kind='지출' then cashbook_price END) 'b31'
 		FROM cashbook
-		WHERE YEAR(cashbook_date) AND MONTH(cashbook_date) = #{month}
+		WHERE MONTH(cashbook_date) = #{month}
 		GROUP BY MONTH(cashbook_date)
 	</select>
 	
