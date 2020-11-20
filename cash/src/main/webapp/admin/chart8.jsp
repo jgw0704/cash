@@ -28,53 +28,36 @@
 	td{height:80px; vertical-align:top;}
 </style>
 </head>
-<body id="page-top" style="margin: 90px;">
-<!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/admin/index">Main</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-			<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-        </ul>
-      </div>
+<body id="page-top"><div>
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/view/inc/menu.jsp"></jsp:include></div>
+ <header>
+    <div class="container text-center">
+      <h1>.</h1>
     </div>
-  </nav>
-  
-  <div class="container">
+  </header>
+
+<section id="about">
+	<div class="container">
 		<div class="dropdown dropleft float-right">
-			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-				Chart menu
-			</button>
-			<div class="dropdown-menu">
-				<a class="dropdown-item" href="/admin/chart1.jsp">chart1</a>
-				<a class="dropdown-item" href="/admin/chart2.jsp">chart2</a>
-				<a class="dropdown-item" href="/admin/chart3.jsp">chart3</a>
-				<a class="dropdown-item" href="/admin/chart4.jsp">chart4</a>
-				<a class="dropdown-item" href="/admin/chart5.jsp">chart5</a>
-				<a class="dropdown-item" href="/admin/chart6.jsp">chart6</a>
-				<a class="dropdown-item" href="/admin/chart7.jsp">chart7</a>
-				<a class="dropdown-item" href="/admin/chart8.jsp">chart8</a>
-				<a class="dropdown-item" href="/admin/chart9.jsp">chart9</a>
-			</div>
+			<button type="button" class="btn btn-primary dropdown-toggle"
+				data-toggle="dropdown">Chart menu</button>
+			<jsp:include page="${pageContext.request.contextPath}/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
 		</div>
 	</div>
-  
-	<div class="container">
-		<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
-		<h1>총 년도(18, 19, 20)의 월별 수입/지출</h1>
+  </section>
+	<section id="services" class="bg-light">
+		<div class="container" style="min-height: 774px; ">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+		<h2>총 년도(18, 19, 20)의 월별 수입/지출</h2>
 		<h4>scatter 차트</h4>
-		<div class="input-group mb-3 col-lg-4">
+		<div class="input-group mb-3 col-lg-8">
 		<div class="input-group-prepend">
 			<span class="input-group-text">년도 검색</span>
 		</div>
 			<input class="form-control" type="text" id="month">
 			<button class= "btn btn-primary" id="inAndOutByMonthChart" type="button">검색</button>
 		</div>
-	</div>
 	<!-- chart -->
 	<div>
 		<canvas id="chart8" class="container"></canvas>
@@ -83,7 +66,11 @@
 	<div>
 		
 	</div>
-	<footer class="py-5 bg-dark" style="margin: 1px -90px;">
+	</div>
+			</div>
+		</div>
+	</section>
+	<footer class="py-5 bg-dark">
 	    <div class="container">
 	      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
 	    </div>

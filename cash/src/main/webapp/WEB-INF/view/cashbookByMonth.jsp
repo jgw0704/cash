@@ -9,6 +9,14 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>cashbookByMonth</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
@@ -20,34 +28,26 @@
 	td{height:80px; vertical-align:top;}
 </style>
 </head>
-<body id="page-top" style="margin: 90px;">
- <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/admin/index">Main</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-			<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-        </ul>
-      </div>
+<body id="page-top">
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/view/inc/menu.jsp"></jsp:include></div>
+ <header>
+    <div class="container text-center">
+      <h1>.</h1>
     </div>
-  </nav>
-	<h1 class="text-center">cashbook</h1>
+  </header>
+  
+  <section id="about">
+  <div class="container">
+	<h1 class="text-center"  style="min-height: 110px;">cashbook</h1>
 	<!-- 다이어리 -->
-	<div class="container">
 		이번달 수입 합계 : ${sumIn}
 		&nbsp;
 		이번달 지출 합계 : ${sumOut}
-	<h3>
+	<h3  style="min-height: 100px;">
 		<a href="/admin//cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[이전달]</a>
 		${currentYear}년 ${currentMonth} 월
 		<a href="/admin//cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[다음달]</a>
 	</h3>
-	</div>
-	<div class="container">
 		<table class="table-bordered" border="1" width="100%">
 			<thead>
 				<tr class="table-Secondary">
@@ -99,7 +99,9 @@
 			</tbody>
 		</table>
 	</div>
-	<footer class="py-5 bg-dark" style="margin: 1px -90px;">
+	</section>
+	
+	<footer class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
     </div>

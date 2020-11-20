@@ -22,121 +22,139 @@
 <!-- Custom styles for this template -->
 <link href="css/scrolling-nav.css" rel="stylesheet">
 <style type="text/css">
-	.sunday {color : #FF0000;}
-	.saturday {color: #0000FF;}
-	th {width:${100/7}%;}
-	td{height:80px; vertical-align:top;}
+.sunday {
+	color: #FF0000;
+}
+
+.saturday {
+	color: #0000FF;
+}
+
+th {
+	width: ${100/7
+}
+
+%;
+}
+td {
+	height: 80px;
+	vertical-align: top;
+}
 </style>
 </head>
-<body id="page-top" style="margin: 90px;">
-<!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/admin/index">Main</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-			<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-        </ul>
-      </div>
+<body id="page-top">
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/view/inc/menu.jsp"></jsp:include></div>
+ <header>
+    <div class="container text-center">
+      <h1>.</h1>
     </div>
-  </nav>
-  
-  <div class="container">
-		<div class="dropdown dropleft float-right">
-			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-				Chart menu
-			</button>
-			<div class="dropdown-menu">
-				<a class="dropdown-item" href="/admin/chart1.jsp">chart1</a>
-				<a class="dropdown-item" href="/admin/chart2.jsp">chart2</a>
-				<a class="dropdown-item" href="/admin/chart3.jsp">chart3</a>
-				<a class="dropdown-item" href="/admin/chart4.jsp">chart4</a>
-				<a class="dropdown-item" href="/admin/chart5.jsp">chart5</a>
-				<a class="dropdown-item" href="/admin/chart6.jsp">chart6</a>
-				<a class="dropdown-item" href="/admin/chart7.jsp">chart7</a>
-				<a class="dropdown-item" href="/admin/chart8.jsp">chart8</a>
-				<a class="dropdown-item" href="/admin/chart9.jsp">chart9</a>
-			</div>
-		</div>
-	</div>
-  
+  </header>
+<section id="about">
 	<div class="container">
+		<div class="dropdown dropleft float-right">
+			<button type="button" class="btn btn-primary dropdown-toggle"
+				data-toggle="dropdown">Chart menu</button>
+			<jsp:include page="${pageContext.request.contextPath}/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
+		</div>
+</div>
+</section>
+<section id="services" class="bg-light">
+	<div class="container" style="min-height: 774px; ">
+	<div class="row">
+				<div class="col-lg-8 mx-auto">
 		<h1>년도별 카테고리 수입/지출 검색</h1>
 		<h4>rader 차트</h4>
-		<div class="input-group mb-3 col-lg-4">
-		<div class="input-group-prepend">
-			<span class="input-group-text">년도 검색</span>
-		</div>
+		<div class="input-group mb-3 col-lg-8">
+			<div class="input-group-prepend">
+				<span class="input-group-text">년도 검색</span>
+			</div>
 			<input class="form-control" type="text" id="year">
-			<button class= "btn btn-primary" id="totalCategoryByYearChart" type="button">검색</button>
+			<button class="btn btn-primary" id="totalCategoryByYearChart"
+				type="button">검색</button>
 		</div>
-	</div>
 	<!-- chart -->
 	<div>
 		<canvas id="chart4" class="container"></canvas>
 	</div>
 	<!-- table -->
-	<div>
-		
-	</div>
-	<footer class="py-5 bg-dark" style="margin: 1px -90px;">
-	    <div class="container">
-	      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-	    </div>
-	    <!-- /.container -->
+	<div></div>
+		</div>
+			</div>
+		</div>
+	</section>
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your
+				Website 2020</p>
+		</div>
+		<!-- /.container -->
 	</footer>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Plugin JavaScript -->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom JavaScript for this theme -->
-  <script src="js/scrolling-nav.js"></script>	
+	<!-- Custom JavaScript for this theme -->
+	<script src="js/scrolling-nav.js"></script>
 </body>
 <script>
-$('#totalCategoryByYearChart').click(function(){
-	$.ajax({
-		url:'/totalCategoryByYear/'+$('#year').val(),
-		type:'get',
-		success:function(data) {
-			console.log(data);
-			let ctx = $('#chart4');
-			let chart = new Chart(ctx, {
-				type:'radar',
-				data:{
-					labels:['급여','식비', '용돈', '생활'], // 항목들
-					datasets:[{
-						label: "년도 카테고리별 수입", // 제목1
-						backgroundColor:"rgba(54, 162, 235,0.2)",
-						borderColor:"rgba(54, 162, 235, 0.2)",
-						pointBackgroundColor:"rgba(54, 162, 235)",
-						pointBorderColor:"#fff",
-						pointHoverBackgroundColor:"#fff",
-						pointHoverBorderColor:"rgba(54, 162, 235)",
-						data:[data.급여수입, data.식비수입, data.용돈수입, data.생활수입], // 데이터1
-						fill:true
-					}, {
-						label: "년도 카테고리별 지출", // 제목2
-						backgroundColor:"rgba(255, 99, 132,0.2)",
-						borderColor:"rgba(255, 99, 132, 0.2)",
-						pointBackgroundColor:"rgba(255, 99, 132)",
-						pointBorderColor:"#fff",
-						pointHoverBackgroundColor:"#fff",
-						pointHoverBorderColor:"rgba(255, 99, 132)",
-						data:[data.급여지출, data.식비지출, data.용돈지출, data.생활지출], // 데이터2
-						fill:true
-					}]
-				},
-				options:{}
-			});
-		}
-	});
-});
+	$('#totalCategoryByYearChart')
+			.click(
+					function() {
+						$
+								.ajax({
+									url : '/totalCategoryByYear/'
+											+ $('#year').val(),
+									type : 'get',
+									success : function(data) {
+										console.log(data);
+										let ctx = $('#chart4');
+										let chart = new Chart(
+												ctx,
+												{
+													type : 'radar',
+													data : {
+														labels : [ '급여', '식비',
+																'용돈', '생활' ], // 항목들
+														datasets : [
+																{
+																	label : "년도 카테고리별 수입", // 제목1
+																	backgroundColor : "rgba(54, 162, 235,0.2)",
+																	borderColor : "rgba(54, 162, 235, 0.2)",
+																	pointBackgroundColor : "rgba(54, 162, 235)",
+																	pointBorderColor : "#fff",
+																	pointHoverBackgroundColor : "#fff",
+																	pointHoverBorderColor : "rgba(54, 162, 235)",
+																	data : [
+																			data.급여수입,
+																			data.식비수입,
+																			data.용돈수입,
+																			data.생활수입 ], // 데이터1
+																	fill : true
+																},
+																{
+																	label : "년도 카테고리별 지출", // 제목2
+																	backgroundColor : "rgba(255, 99, 132,0.2)",
+																	borderColor : "rgba(255, 99, 132, 0.2)",
+																	pointBackgroundColor : "rgba(255, 99, 132)",
+																	pointBorderColor : "#fff",
+																	pointHoverBackgroundColor : "#fff",
+																	pointHoverBorderColor : "rgba(255, 99, 132)",
+																	data : [
+																			data.급여지출,
+																			data.식비지출,
+																			data.용돈지출,
+																			data.생활지출 ], // 데이터2
+																	fill : true
+																} ]
+													},
+													options : {}
+												});
+									}
+								});
+					});
 </script>
 </html>
