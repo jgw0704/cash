@@ -1,5 +1,7 @@
 package kr.co.gdu.cash.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +16,14 @@ import kr.co.gdu.cash.vo.Notice;
 public class NoticeController {
 	@Autowired private NoticeService noticeService;
 	//공지 목록
-	@GetMapping("/admin/noticeList")
-	public String noticeList(Model model, @RequestParam(value ="currentPage", defaultValue = "1") int currentPage) {
+	@GetMapping("/admin/noticeList/{currentPage}")
+	public String noticeList(Model model, 
+			@RequestParam(value ="currentPage", defaultValue = "1") int currentPage) {
+		int rowPerPage = 5;
+		List<Notice> noticeList = noticeService.getNoticeListByPage(currentPage, rowPerPage);
+		model.addAttribute("noticeList", noticeList);
 		// noticeService 호출
-		return "noticeList";
+		return "admin/noticeList";
 	}
 	// 공지 입력 폼
 	@GetMapping("/admin/addNotice")
@@ -31,8 +37,9 @@ public class NoticeController {
 	}
 	// 공지 상세 보기
 	@GetMapping("/admin/noticeOne")
-	public String notice(Model model, @RequestParam(value = "noticeId") int noticeId) {
-		// noticeService 호출
+	public String noticeOne(Model model,
+		@RequestParam(value = "noticeId") int noticeId) {
+		model.addAttribute("notice", noticeService.getNoticeOne(noticeId));
 		return "noticeOne";
 	}
 	// 공지 삭제

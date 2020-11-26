@@ -19,6 +19,6 @@ public class IndexController {
 		Map<String, Object> map = noticeService.getNoticeAndInOutList();
 		model.addAttribute("noticeList", map.get("noticeList"));
 		model.addAttribute("inOutList", map.get("inOutList"));
-		return "index";
+		return "admin/index";
 	}
 }

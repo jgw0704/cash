@@ -94,8 +94,8 @@
 
 	<select id="selectCategoryOutByYear" parameterType="int" resultType="java.util.Map"> <!-- 년도의 카테고리별 지출 -->
 		SELECT YEAR(cashbook_date) '년',
-			sum(case when category_name='용돈' then cashbook_price END) '용돈지출',
-			sum(case when category_name='급여' then cashbook_price END) '급여지출',
+			sum(case when category_name='관광' then cashbook_price END) '관광지출',
+			sum(case when category_name='의료' then cashbook_price END) '의료지출',
 			sum(case when category_name='생활' then cashbook_price END) '생활지출',
 			sum(case when category_name='식비' then cashbook_price END) '식비지출'
 		FROM cashbook
@@ -107,14 +107,16 @@
 		SELECT 
 			sum(case when year(cashbook_date)=2018 AND category_name='용돈' then cashbook_price END) a1,
 			sum(case when year(cashbook_date)=2018 AND category_name='급여' then cashbook_price END) a2,
+			sum(case when year(cashbook_date)=2018 AND category_name='기타' then cashbook_price END) a3,
 			sum(case when year(cashbook_date)=2019 AND category_name='용돈' then cashbook_price END) b1,
 			sum(case when year(cashbook_date)=2019 AND category_name='급여' then cashbook_price END) b2,
+			sum(case when year(cashbook_date)=2019 AND category_name='기타' then cashbook_price END) b3,
 			sum(case when year(cashbook_date)=2020 AND category_name='용돈' then cashbook_price END) c1,
-			sum(case when year(cashbook_date)=2020 AND category_name='급여' then cashbook_price END) c2
+			sum(case when year(cashbook_date)=2020 AND category_name='급여' then cashbook_price END) c2,
+			sum(case when year(cashbook_date)=2020 AND category_name='기타' then cashbook_price END) c3
 		FROM cashbook
 		WHERE cashbook_kind='수입'
 	</select>
-
 
 	<select id="selectMonthInMoneyByYear" parameterType="int" resultType="java.util.Map"> <!-- 년도별 용돈수입 확인 -->
 		SELECT
@@ -131,21 +133,19 @@
 			sum(case when month(cashbook_date)=11 AND category_name='용돈' then cashbook_price END) '11월',
 			sum(case when month(cashbook_date)=12 AND category_name='용돈' then cashbook_price END) '12월'
 		FROM cashbook
-		WHERE YEAR(cashbook_date) = #{year} AND cashbook_kind='수입'
+		WHERE YEAR(cashbook_date) = #{year}
 		GROUP BY YEAR(cashbook_date)
 	</select>
-
 
 	<select id="selectTotalCategoryByYear" parameterType="int" resultType="java.util.Map"> <!-- 년도의 카테고리별 수입 지출 -->
 		SELECT YEAR(cashbook_date) '년',
 			sum(case when cashbook_kind='수입' AND category_name='용돈' then cashbook_price END) '용돈수입',
 			sum(case when cashbook_kind='수입' AND category_name='급여' then cashbook_price END) '급여수입',
-			sum(case when cashbook_kind='수입' AND category_name='생활' then cashbook_price END) '생활수입',
-			sum(case when cashbook_kind='수입' AND category_name='식비' then cashbook_price END) '식비수입',
-			sum(case when cashbook_kind='지출' AND category_name='용돈' then cashbook_price END) '용돈지출',
-			sum(case when cashbook_kind='지출' AND category_name='급여' then cashbook_price END) '급여지출',
+			sum(case when cashbook_kind='수입' AND category_name='기타' then cashbook_price END) '기타수입',
+			sum(case when cashbook_kind='지출' AND category_name='관광' then cashbook_price END) '관광지출',
 			sum(case when cashbook_kind='지출' AND category_name='생활' then cashbook_price END) '생활지출',
-			sum(case when cashbook_kind='지출' AND category_name='식비' then cashbook_price END) '식비지출'
+			sum(case when cashbook_kind='지출' AND category_name='식비' then cashbook_price END) '식비지출',
+			sum(case when cashbook_kind='지출' AND category_name='의료' then cashbook_price END) '의료지출'
 		FROM cashbook
 		WHERE YEAR(cashbook_date) = #{year}
 		GROUP BY Year(cashbook_date)

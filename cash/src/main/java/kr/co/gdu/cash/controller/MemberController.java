@@ -14,7 +14,7 @@ public class MemberController {
 	
 	@GetMapping("/admin/addMember")
 	public String addMember() {
-		return "addMember";
+		return "admin/addMember";
 	}
 	
 	@PostMapping("/admin/addMember")

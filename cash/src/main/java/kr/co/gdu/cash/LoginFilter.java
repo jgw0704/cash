@@ -20,7 +20,7 @@ public class LoginFilter implements Filter {
 		System.out.println("login filter 실행.....");
 		HttpSession session = ((HttpServletRequest)request).getSession();
 		if(session.getAttribute("loginId") == null) {
-			((HttpServletResponse)response).sendRedirect("/login");
+			((HttpServletResponse)response).sendRedirect(((HttpServletRequest) request).getContextPath()+"/login");
 			return;
 		}
 		chain.doFilter(request, response);

@@ -17,13 +17,18 @@ import kr.co.gdu.cash.vo.Notice;
 public class NoticeService {
 	@Autowired private NoticeMapper noticeMapper;
 	@Autowired private CashbookMapper cashbookMapper;
-	 
-	public List<Notice> getNoticeListByPage(int currentPage, int rowPerPage) {
-		// noticeMapper 메서드 호출
-		return null;
+	
+	public Notice getNoticeOne(int noticeId) {
+		return noticeMapper.selectNoticeOne(noticeId);
 	}
 	
-	// issue : noticeList....중복
+	public List<Notice> getNoticeListByPage(int currentPage, int rowPerPage) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("beginRow", (currentPage-1)*rowPerPage);
+		map.put("rowPerPage", rowPerPage);
+		return noticeMapper.selectNoticeListByPage(map);
+	}
+	
 	public Map<String, Object> getNoticeAndInOutList() { 
 		List<Notice> noticeList = noticeMapper.selectLatestNoiceList();
 		List<Map<String, Object>> inOutList = cashbookMapper.selectCashInOutList();

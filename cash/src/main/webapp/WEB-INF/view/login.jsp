@@ -27,7 +27,7 @@
 			</tbody>
 		</table>
 	<h1 class="text-center">로그인</h1>
-	<form action="/login" method="post" style="margin: auto; text-align: center; width: 50%;">
+	<form action="${pageContext.request.contextPath}/login" method="post" style="margin: auto; text-align: center; width: 50%;">
 		<div class="container">
 			ID : <input type="text" class="form-control" name="id">
 		</div>

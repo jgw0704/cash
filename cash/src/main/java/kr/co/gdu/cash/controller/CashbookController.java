@@ -29,7 +29,7 @@ public class CashbookController {
 		int rowPerPage = 20;
 		List<Cashbook> cashbookList = cashbookService.getCashbookListByPage(currentPage, rowPerPage);
 		model.addAttribute("cashbookList", cashbookList);
-		return "cashbookList";
+		return "admin/cashbookList";
 	}
 	
 	@PostMapping("/admin/addCashbook")
@@ -46,7 +46,7 @@ public class CashbookController {
 			@RequestParam(name = "currentDay", required = true) int currentDay) {
 		List<Category> categoryList = categoryService.getCategoryList();
 		model.addAttribute("categoryList", categoryList);
-		return "addCashbook"; // forward
+		return "admin/addCashbook"; // forward
 	}
 	
 	@GetMapping("/admin/cashbookByDay/{target}/{currentYear}/{currentMonth}/{currentDay}")
@@ -73,7 +73,7 @@ public class CashbookController {
 		model.addAttribute("currentYear", targetDay.get(Calendar.YEAR));
 		model.addAttribute("currentMonth", targetDay.get(Calendar.MONTH)+1);
 		model.addAttribute("currentDay", targetDay.get(Calendar.DATE));
-		return "cashbookByDay";
+		return "admin/cashbookByDay";
 	}
 	
 	@GetMapping(value="/admin/cashbookByMonth")
@@ -121,6 +121,6 @@ public class CashbookController {
 		
 		model.addAttribute("cashList", cashList);
 		
-		return "cashbookByMonth";
+		return "admin/cashbookByMonth";
 	}
 }
